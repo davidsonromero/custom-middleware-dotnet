@@ -44,9 +44,9 @@ builder.Services.AddAuthorization();
 //CORS Configuration
 builder.Services.AddCors(options =>
 {
-    options.AddPolicy("AllowSpecificOrigin", builder =>
+    options.AddPolicy("AllowSpecificOrigin", c =>
     {
-        builder.WithOrigins("https://localhost:7028/")
+        c.WithOrigins(builder.Configuration["AllowedHosts"])
                .WithMethods("GET", "POST", "PUT", "PATCH", "DELETE")
                .AllowAnyHeader();
     });
