@@ -67,12 +67,18 @@ This project demonstrates the implementation of custom middleware in a .NET 8 AP
 
 ## Dependencies
 
-- **NuGet Packages**
-  - `Microsoft.AspNetCore.Authentication.JwtBearer`
-  - `Microsoft.Extensions.Configuration`
-  - `Microsoft.IdentityModel.Tokens`
-  - `Serilog`
-  - `Swashbuckle.AspNetCore`
+### ImplementingCustomMiddleware
+
+- `Microsoft.AspNetCore.Authentication.JwtBearer`
+- `Serilog.AspNetCore`
+- `Serilog.Sinks.Console`
+- `Serilog.Sinks.File`
+- `Swashbuckle.AspNetCore`
+
+### ImplementingCustomMiddlewareApplication
+
+- `Microsoft.Extensions.Configuration.Abstractions`
+- `System.IdentityModel.Tokens.Jwt`
 
 ## Conclusion
 
