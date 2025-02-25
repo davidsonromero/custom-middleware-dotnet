@@ -9,7 +9,6 @@ namespace ImplementingCustomMiddlewareApi.Extensions
         {
             services.AddTransient<IGenerateRequestGuidMiddlewareService, GenerateRequestGuidMiddlewareService>();
             services.AddTransient<IApiKeyMiddlewareService, ApiKeyMiddlewareService>(provider => new ApiKeyMiddlewareService(configuration));
-            services.AddTransient<IJwtMiddlewareService, JwtMiddlewareService>(provider => new JwtMiddlewareService(configuration));
         }
     }
 }

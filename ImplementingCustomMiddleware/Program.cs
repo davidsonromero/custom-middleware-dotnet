@@ -92,7 +92,6 @@ if (app.Environment.IsDevelopment())
 app.UseGenerateRequestGuidMiddleware();
 app.UseLogMiddleware();
 app.UseApiKeyMiddleware();
-app.UseJwtValidationMiddleware();
 
 app.UseHttpsRedirection();
 
