@@ -57,7 +57,7 @@ This project demonstrates the implementation of custom middleware in a .NET 8 AP
 ## Endpoints
 
 - **AuthController**
-  - `POST /api/auth/login`: Authenticates a user and returns a JWT token.
+  - `POST /api/auth/login`: Authenticates a user and returns a JWT token. The authentication uses mock user data. Send "testuser" as username and "password" as password to authenticate.
 
 - **TestController**
   - `GET /api/test`: A protected endpoint that requires a valid JWT token.
