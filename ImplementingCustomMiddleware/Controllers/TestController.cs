@@ -13,5 +13,11 @@ namespace ImplementingCustomMiddlewareApi.Controllers
         {
             return Ok("Success");
         }
+
+        [HttpGet("exception")]
+        public IActionResult TestException()
+        {
+            throw new ArgumentException("Test for argument exception");
+        }
     }
 }

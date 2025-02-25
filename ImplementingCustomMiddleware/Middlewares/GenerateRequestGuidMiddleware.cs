@@ -17,7 +17,7 @@ namespace ImplementingCustomMiddlewareApi.Middlewares
 
             context.Request.Headers.Append("X-Transaction-Id", service.GenerateGuid());
 
-            _next(context);
+            await _next(context);
         }
     }
 

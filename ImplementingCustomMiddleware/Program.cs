@@ -101,6 +101,7 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI();
 }
 //Custom middlewares
+app.UseExceptionHandlingMiddleware();
 app.UseGenerateRequestGuidMiddleware();
 app.UseLogMiddleware();
 app.UseApiKeyMiddleware();

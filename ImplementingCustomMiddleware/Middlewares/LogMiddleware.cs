@@ -22,11 +22,12 @@ namespace ImplementingCustomMiddlewareApi.Middlewares
 
             try
             {
-                _next(context);
+                await _next(context);
             }
             catch (Exception ex)
             {
                 _logger.LogInformation($"Error while executing a request: {request.Method} {request.Path} | ID: {request.Headers["X-Transaction-Id"]} | IP Address: {context.Connection.RemoteIpAddress} | Message: {ex.Message}");
+                throw ex; //Re-throwing exception for it to be treated by the exception middleware.
             }
 
             stopwatch.Stop();
