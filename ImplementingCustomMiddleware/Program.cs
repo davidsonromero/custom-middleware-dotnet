@@ -41,6 +41,18 @@ builder.Services.AddAuthentication(c => {
 });
 builder.Services.AddAuthorization();
 
+//CORS Configuration
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy("AllowSpecificOrigin", builder =>
+    {
+        builder.WithOrigins("https://localhost:7028/")
+               .WithMethods("GET", "POST", "PUT", "PATCH", "DELETE")
+               .AllowAnyHeader();
+    });
+
+});
+
 builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen(c =>
@@ -92,6 +104,8 @@ if (app.Environment.IsDevelopment())
 app.UseGenerateRequestGuidMiddleware();
 app.UseLogMiddleware();
 app.UseApiKeyMiddleware();
+
+app.UseCors("AllowSpecificOrigin");
 
 app.UseHttpsRedirection();
 
