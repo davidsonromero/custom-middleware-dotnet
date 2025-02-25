@@ -32,7 +32,7 @@ This project demonstrates the implementation of custom middleware in a .NET 8 AP
   - `ExceptionHandlingMiddleware`: Treats untreated exceptions.
 
 - **Authentication**
-  - JWT-based authentication using `JwtService`.
+  - JWT-based authentication.
 
 - **CORS Configuration**
   - Configured to allow specific origins and HTTP methods.
