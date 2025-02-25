@@ -10,6 +10,6 @@ namespace ImplementingCustomMiddlewareApplication.DTOs.Login
     {
         public string UserName { get; set; }
         public string AccessToken { get; set; }
-        public int ExpiresIn { get; set; }
+        public int MinutesToExpire { get; set; }
     }
 }
