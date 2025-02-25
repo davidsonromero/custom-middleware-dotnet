@@ -14,6 +14,7 @@ This project demonstrates the implementation of custom middleware in a .NET 8 AP
   - **Middlewares**
     - `GenerateRequestGuidMiddlewareService.cs`: Middleware service to generate a request GUID.
     - `ApiKeyMiddlewareService.cs`: Middleware service to handle API key validation.
+    - `ExceptionHandlingMiddlewareService.cs`: Middleware service to handle untreated exceptions.
 
 - **Controllers**
   - `AuthController.cs`: Handles authentication-related endpoints, such as login.
@@ -28,6 +29,7 @@ This project demonstrates the implementation of custom middleware in a .NET 8 AP
   - `GenerateRequestGuidMiddleware`: Generates a unique GUID for each request.
   - `LogMiddleware`: Logs request and response details.
   - `ApiKeyMiddleware`: Validates API keys for incoming requests.
+  - `ExceptionHandlingMiddleware`: Treats untreated exceptions.
 
 - **Authentication**
   - JWT-based authentication using `JwtService`.
@@ -59,6 +61,7 @@ This project demonstrates the implementation of custom middleware in a .NET 8 AP
 
 - **TestController**
   - `GET /api/test`: A protected endpoint that requires a valid JWT token.
+  - `GET /api/test/exception`: A protected endpoint that requires a valid JWT token used to test the exception handling middleware.
 
 ## Configuration
 
@@ -70,6 +73,7 @@ This project demonstrates the implementation of custom middleware in a .NET 8 AP
 ### ImplementingCustomMiddleware
 
 - `Microsoft.AspNetCore.Authentication.JwtBearer`
+- `Microsoft.Data.SqlClient`
 - `Serilog.AspNetCore`
 - `Serilog.Sinks.Console`
 - `Serilog.Sinks.File`
@@ -78,6 +82,7 @@ This project demonstrates the implementation of custom middleware in a .NET 8 AP
 ### ImplementingCustomMiddlewareApplication
 
 - `Microsoft.Extensions.Configuration.Abstractions`
+- `Microsofit.AspNetCore.Http.Abstractions`
 - `System.IdentityModel.Tokens.Jwt`
 
 ## Conclusion
