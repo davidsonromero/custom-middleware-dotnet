@@ -1,5 +1,7 @@
 ﻿namespace ImplementingCustomMiddlewareApi.Middlewares
 {
+    using ImplementingCustomMiddlewareApplication.Services.Middlewares.Implementations;
+    using ImplementingCustomMiddlewareApplication.Services.Middlewares.Interfaces;
     using Microsoft.AspNetCore.Authorization;
     using Microsoft.AspNetCore.Http;
     using Microsoft.IdentityModel.Tokens;
@@ -31,7 +33,9 @@
 
             var token = context.Request.Headers["Authorization"].FirstOrDefault()?.Split(" ").Last();
 
-            if (token != null && ValidateToken(token, out ClaimsPrincipal principal))
+            IJwtMiddlewareService service = context.RequestServices.GetRequiredService<IJwtMiddlewareService>();
+
+            if (token != null && service.ValidateToken(token, out ClaimsPrincipal principal))
             {
                 await _next(context);
             }
@@ -39,35 +43,6 @@
             {
                 context.Response.StatusCode = StatusCodes.Status401Unauthorized;
                 await context.Response.WriteAsync("Invalid or absent token.");
-            }
-        }
-
-        private bool ValidateToken(string token, out ClaimsPrincipal principal)
-        {
-            principal = null;
-            var tokenHandler = new JwtSecurityTokenHandler();
-
-            try
-            {
-                var key = Encoding.UTF8.GetBytes(_configuration["JwtConfig:Key"]);
-                var validationParameters = new TokenValidationParameters
-                {
-                    ValidateIssuer = true,
-                    ValidateAudience = true,
-                    ValidateLifetime = true,
-                    ValidateIssuerSigningKey = true,
-                    ValidIssuer = _configuration["JwtConfig:Issuer"],
-                    ValidAudience = _configuration["JwtConfig:Audience"],
-                    IssuerSigningKey = new SymmetricSecurityKey(key),
-                    ClockSkew = TimeSpan.Zero
-                };
-
-                principal = tokenHandler.ValidateToken(token, validationParameters, out _);
-                return true;
-            }
-            catch
-            {
-                return false;
             }
         }
     }
