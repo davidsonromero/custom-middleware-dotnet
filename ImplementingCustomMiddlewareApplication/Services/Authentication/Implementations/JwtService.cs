@@ -23,9 +23,9 @@ namespace ImplementingCustomMiddlewareApplication.Services.Authentication.Implem
 
             var claims = new[]
             {
-            new Claim(JwtRegisteredClaimNames.Sub, userName),
-            new Claim(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString())
-        };
+                new Claim(JwtRegisteredClaimNames.Sub, userName),
+                new Claim(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString())
+            };
 
             var token = new JwtSecurityToken(
                 issuer: _configuration["JwtConfig:Issuer"],
